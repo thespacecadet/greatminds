@@ -51,10 +51,13 @@ class User extends Authenticatable
     }
 
     /**
-     * Contacts of the user.
+     * Followers of the user.
      */
-    public function contacts(): BelongsToMany
+    public function followers(): BelongsToMany
     {
-        return $this->belongsToMany(User::class,'user_contact','user_id','contact_id');
+        return $this->belongsToMany(User::class,'user_follower','user_id','follower_id')
+            ->using(UserFollower::class)
+            ->withTimestamps();
     }
+
 }
