@@ -35,6 +35,9 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('messages.index')" :active="route().current('messages.index')">
                                     Messages
                                 </NavLink>
+                                <NavLink :href="route('followers')" :active="route().current('followers')">
+                                    Followers
+                                </NavLink>
                             </div>
                         </div>
 

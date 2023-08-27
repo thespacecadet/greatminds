@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use \App\Http\Controllers\FollowerController;
 use App\Http\Controllers\MessageController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,9 @@ Route::get('/dashboard', function () {
 Route::resource('messages', MessageController::class)
     ->only(['index', 'store', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
+
+Route::get('/followers', [FollowerController::class,'followers']
+)->middleware(['auth', 'verified'])->name('followers');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
